@@ -1,0 +1,44 @@
+
+services:
+  main_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9001:9001"
+    container_name: main_service
+    volumes:
+      - ./config/config.yml:/app/config/config.yml
+    logging:
+      options:
+        max-size: "1024m"
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  redis:
+    image: redis:6.2-alpine
+    restart: always
+    logging:
+      options:
+        max-size: "100m"
+    ports:
+      - '6382:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass 93sgfjfT46ga
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  postgres:
+    image: postgres:16
+    env_file:
+      - .env
+    ports:
+      - "5490:5432"
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+    container_name: kursach_postgres
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

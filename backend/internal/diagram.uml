@@ -1,0 +1,17 @@
+@startuml
+namespace internal {
+    class App << (S,Aquamarine) >> {
+        - cfg *config.Config
+        - db storage.Postgres
+        - redis *storage.Redis
+
+        + UC <font color=blue>map</font>[string]<font color=blue>interface</font>{}
+        + Repo <font color=blue>map</font>[string]<font color=blue>interface</font>{}
+
+        + Init() error
+
+    }
+}
+
+
+@enduml

@@ -1,0 +1,24 @@
+postgres:
+  host: 'host.docker.internal'
+  port: '5490'
+  user: 'rw_main'
+  password: 'hrgr2ss10nd'
+  db_name: 'main'
+  ssl_mode: 'disable'
+redis:
+  host: 'host.docker.internal'
+  port: '6382'
+  password: '93sgfjfT46ga'
+server:
+  host: "0.0.0.0"
+  port: "9001"
+  version: "0.0.1"
+auth:
+  salt: "testsalt"
+  access_token_lifetime: 12
+  refresh_token_lifetime: 240
+mail:
+  smtp_host: "smtp.gmail.com"
+  smtp_port: "587"
+  email: "helprepet@gmail.com"
+  password: "vfmwoimqfxtglbaq"

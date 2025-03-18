@@ -1,0 +1,26 @@
+@startuml
+' Рисунок 10 – Диаграмма пакетов клиентского приложения "PocketTutor"
+
+package "Client Application" {
+    [App]
+
+    package "UI Components" {
+        [HomePage]
+        [LoginPage]
+        [CalendarPage]
+        [UserPage]
+    }
+
+    package "Service Layer" {
+        [API]
+    }
+}
+
+' Определение связей между главным компонентом и пакетами
+[App] --> [HomePage]
+[App] --> [LoginPage]
+[App] --> [CalendarPage]
+[App] --> [UserPage]
+[App] --> [API]
+
+@enduml
